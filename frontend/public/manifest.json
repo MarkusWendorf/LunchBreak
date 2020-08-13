@@ -1,0 +1,9 @@
+{
+    "name": "LunchBreak",
+    "short_name": "LunchBreak",
+    "theme_color": "#253250",
+    "background_color": "#253250",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "https://d1sj41qgcumq4m.cloudfront.net"
+  }
