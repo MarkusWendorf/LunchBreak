@@ -5,5 +5,9 @@
     "background_color": "#253250",
     "display": "standalone",
     "scope": "/",
-    "start_url": "https://d1sj41qgcumq4m.cloudfront.net"
+    "start_url": "https://d1sj41qgcumq4m.cloudfront.net",
+    "icons": [{
+      "src": "favicon.png",
+      "sizes": "192x192"
+    }]
   }

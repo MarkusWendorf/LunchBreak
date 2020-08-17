@@ -18,6 +18,7 @@ export class CdkStack extends cdk.Stack {
       cors: [{
         allowedMethods: [s3.HttpMethods.GET],
         allowedOrigins: ["*"],
+        allowedHeaders: ["*"]
       }]
     });
     const oai = new cloudfront.OriginAccessIdentity(this, "LunchBreakWebOAI");
@@ -37,6 +38,7 @@ export class CdkStack extends cdk.Stack {
             behaviors: [{ 
               isDefaultBehavior: true, 
               allowedMethods: cloudfront.CloudFrontAllowedMethods.GET_HEAD_OPTIONS,
+              cachedMethods: cloudfront.CloudFrontAllowedCachedMethods.GET_HEAD_OPTIONS,
               forwardedValues: {
                 headers: ["Origin", "Access-Control-Request-Headers", "Access-Control-Request-Method"],
                 queryString: true,
@@ -60,7 +62,7 @@ export class CdkStack extends cdk.Stack {
     const apiLambda = new lambda.Function(this, "LunchBreakApiLambda", {
       runtime: lambda.Runtime.JAVA_8,
       handler: "Handler::handleRequest",
-      code: lambda.Code.fromAsset("../api/target/lunch-1.0-shaded.jar"),
+      code: lambda.Code.fromAsset("../api/target/lunch-1.0.jar"),
       memorySize: 2048,
       timeout: Duration.seconds(10),
       environment: { bucket: bucket.bucketName },
@@ -75,7 +77,7 @@ export class CdkStack extends cdk.Stack {
     );
 
     new events.Rule(this, "LunchTimeScheduler", {
-      schedule: events.Schedule.expression("cron(0 7-13 * * ? *)"), // every hour from 7 to 13
+      schedule: events.Schedule.expression("cron(0 5-13 * * ? *)"), // every hour from 5 to 13 (GMT)
       targets: [new eventTargets.LambdaFunction(apiLambda)],
     });
   }

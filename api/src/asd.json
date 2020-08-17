@@ -1,0 +1,468 @@
+{
+  "33": {
+    "2020-08-10": [
+      {
+        "provider": "Insa",
+        "date": "2020-08-10",
+        "dishes": [
+          {
+            "name": "Nudeln in Basilikumpesto mit Mozzarella-Tomate-Rucola Topping",
+            "price": 420
+          },
+          {
+            "name": "Hähnchen-Cordon-Bleu mit Erbsen in Rahm und Petersilienkartoffeln",
+            "price": 450
+          }
+        ]
+      },
+      {
+        "provider": "Küstenmühle",
+        "date": "2020-08-10",
+        "dishes": [
+          {
+            "name": "Kohlrabi-Möhreneintopf mit Baguette",
+            "price": 330
+          },
+          {
+            "name": "Bunter Salatteller mit gebackenem Fetakäse",
+            "price": 450
+          },
+          {
+            "name": "Hackschmorkohl mit Kartoffeln",
+            "price": 480
+          },
+          {
+            "name": "Schweinesteak in Paprikarahm gebacken mit Kroketten",
+            "price": 550
+          }
+        ]
+      }
+    ],
+    "2020-08-11": [
+      {
+        "provider": "Insa",
+        "date": "2020-08-11",
+        "dishes": [
+          {
+            "name": "gebutterte Kartoffeln mit Kräuterquark und Salat",
+            "price": 400
+          },
+          {
+            "name": "Currywurst mit fruchtiger Currysoße und Kartoffelecken dazu ein bunter Salat",
+            "price": 450
+          }
+        ]
+      },
+      {
+        "provider": "Küstenmühle",
+        "date": "2020-08-11",
+        "dishes": [
+          {
+            "name": "Cremiges Blumenkohl-Süppchen mit Baguette (vegetarisch)",
+            "price": 330
+          },
+          {
+            "name": "Spinat mit Rührei und Kartoffeln",
+            "price": 450
+          },
+          {
+            "name": "Hackbällchen „Zigeuner Art“ mit Kroketten",
+            "price": 480
+          },
+          {
+            "name": "Gebackenes Schollenfilet mit Bratkartoffeln und Salatbeilage",
+            "price": 550
+          }
+        ]
+      }
+    ],
+    "2020-08-12": [
+      {
+        "provider": "Insa",
+        "date": "2020-08-12",
+        "dishes": [
+          {
+            "name": "Vollkornnudeln mit Käsesoße und Möhrensalat",
+            "price": 400
+          },
+          {
+            "name": "Rindergulasch mit Kartoffeln dazu Salat",
+            "price": 500
+          }
+        ]
+      },
+      {
+        "provider": "Küstenmühle",
+        "date": "2020-08-12",
+        "dishes": [
+          {
+            "name": "Cremiges Blumenkohl-Süppchen mit Baguette (vegetarisch)",
+            "price": 330
+          },
+          {
+            "name": "Kaiserschmarrn mit Pflaumen",
+            "price": 450
+          },
+          {
+            "name": "Grützwurst mit Sauerkraut und Kartoffeln",
+            "price": 480
+          },
+          {
+            "name": "Schnitzel mit Blumenkohl „polnisch“ und Herzoginkartoffeln",
+            "price": 550
+          }
+        ]
+      }
+    ],
+    "2020-08-13": [
+      {
+        "provider": "Insa",
+        "date": "2020-08-13",
+        "dishes": [
+          {
+            "name": "Rührei mit Rahmspinat und Salzkartoffeln",
+            "price": 380
+          },
+          {
+            "name": "Backfisch mit Kräutersoße und Tomatenreis",
+            "price": 450
+          }
+        ]
+      },
+      {
+        "provider": "Küstenmühle",
+        "date": "2020-08-13",
+        "dishes": [
+          {
+            "name": "Geflügeleintopf mit Gemüse und Reis",
+            "price": 330
+          },
+          {
+            "name": "Zucchini-Lasagne mit Hirtenkäse und Tomate",
+            "price": 450
+          },
+          {
+            "name": "Schweinegulasch mit Gemüse und Butterspätzle",
+            "price": 480
+          },
+          {
+            "name": "Seelachs in Sesampanade an lauwarmen Kartoffelsalat",
+            "price": 550
+          }
+        ]
+      }
+    ],
+    "2020-08-14": [
+      {
+        "provider": "Insa",
+        "date": "2020-08-14",
+        "dishes": [
+          {
+            "name": "Eierkuchen mit Apfelmus oder Zimt und Zucker",
+            "price": 380
+          },
+          {
+            "name": "Haschee vom Schwein (Gehacktesstippe) Hackfleisch in Brauner Soße mit Stampfkartoffeln und Gewürzgurken",
+            "price": 420
+          }
+        ]
+      },
+      {
+        "provider": "Küstenmühle",
+        "date": "2020-08-14",
+        "dishes": [
+          {
+            "name": "Geflügeleintopf mit Gemüse und Reis",
+            "price": 330
+          },
+          {
+            "name": "Gnocci-Pfanne mit Kräutern und Marktgemüse",
+            "price": 450
+          },
+          {
+            "name": "„Zürcher“ Geschnetzeltes an Röstitaler und Bohnensalat",
+            "price": 480
+          },
+          {
+            "name": "Sauerbraten über Nacht geschmort mit Rotkohl und Klößen",
+            "price": 550
+          }
+        ]
+      }
+    ]
+  },
+  "34": {
+    "2020-08-17": [
+      {
+        "provider": "Insa",
+        "date": "2020-08-17",
+        "dishes": [
+          {
+            "name": "Eierragout mit Salzkartoffeln",
+            "price": 380
+          },
+          {
+            "name": "Nudeln mit Schinken-Sahne-Soße",
+            "price": 420
+          }
+        ]
+      },
+      {
+        "provider": "Küstenmühle",
+        "date": "2020-08-17",
+        "dishes": [
+          {
+            "name": "Wruckeneintopf mit Baguette",
+            "price": 330
+          },
+          {
+            "name": "Gebratene Champignons mit Kartoffelstampf und Röstzwiebeln",
+            "price": 450
+          },
+          {
+            "name": "Rostocker Bratwurst mit Sauerkraut und Kartoffelstampf",
+            "price": 480
+          },
+          {
+            "name": "Rindergulasch mit Rotkohl und Kartoffeln",
+            "price": 550
+          }
+        ]
+      }
+    ],
+    "2020-08-18": [
+      {
+        "provider": "Insa",
+        "date": "2020-08-18",
+        "dishes": [
+          {
+            "name": "Rote-Beete-Puffer mit Petersiliensoße dazu Kartoffel-Möhren-Stampf",
+            "price": 420
+          },
+          {
+            "name": "Geflügelbällchen in Rahmsoße mit Stampfkartoffeln und buntem Krautsalat",
+            "price": 420
+          }
+        ]
+      },
+      {
+        "provider": "Küstenmühle",
+        "date": "2020-08-18",
+        "dishes": [
+          {
+            "name": "Wruckeneintopf mit Baguette",
+            "price": 330
+          },
+          {
+            "name": "Gebratene Asianudeln mit knackigem Gemüse und Ei",
+            "price": 450
+          },
+          {
+            "name": "Hausgemachte Boulette mit Rosenkohl, Bratensauce und Kartoffeln",
+            "price": 480
+          },
+          {
+            "name": "Gebratener Seelachs auf buntem Gemüse, Kartoffeln und Meerrettichsauce",
+            "price": 550
+          }
+        ]
+      }
+    ],
+    "2020-08-19": [
+      {
+        "provider": "Insa",
+        "date": "2020-08-19",
+        "dishes": [
+          {
+            "name": "mediterran geschmorte Kartoffel mit Zucchini, Paprika, Tomaten, gratiniert mit Fetakäse",
+            "price": 420
+          },
+          {
+            "name": "Braten vom Schweinelachs mit Möhren-Kohlrabi-Gemüse und Petersilienkartoffeln",
+            "price": 500
+          }
+        ]
+      },
+      {
+        "provider": "Küstenmühle",
+        "date": "2020-08-19",
+        "dishes": [
+          {
+            "name": "Pichelsteiner Eintopf mit Rindfleisch Und Baguette",
+            "price": 330
+          },
+          {
+            "name": "Kartoffelpuffer mit Apfelmus oder Zimt und Zucker",
+            "price": 450
+          },
+          {
+            "name": "3 Chicken-Wings mit Barbeque-Sauce, Wedges und Coleslaw Salat",
+            "price": 480
+          },
+          {
+            "name": "Griechisches Schnitzel mit Ratatouille und Pommes Frites 5,20 EUR",
+            "price": 550
+          }
+        ]
+      }
+    ],
+    "2020-08-20": [
+      {
+        "provider": "Insa",
+        "date": "2020-08-20",
+        "dishes": [
+          {
+            "name": "Nudeln mit italienischer Tomatensoße dazu Basilikum-Öl und geröstete Mandelstifte",
+            "price": 400
+          },
+          {
+            "name": "Wildlachs-Würfel in Kräuter-Gemüse-Rahm mit Reis",
+            "price": 420
+          }
+        ]
+      },
+      {
+        "provider": "Küstenmühle",
+        "date": "2020-08-20",
+        "dishes": [
+          {
+            "name": "Pichelsteiner Eintopf mit Rindfleisch Und Baguette",
+            "price": 330
+          },
+          {
+            "name": "Ofenkartoffel mit Spargelragout, Käse und kleinem Salat",
+            "price": 450
+          },
+          {
+            "name": "Hähnchenkeule mit Pommes Frites und Buttererbsen",
+            "price": 480
+          },
+          {
+            "name": "Fischboulette mit Mischgemüse und Kartoffeln",
+            "price": 550
+          }
+        ]
+      }
+    ],
+    "2020-08-21": [
+      {
+        "provider": "Insa",
+        "date": "2020-08-21",
+        "dishes": [
+          {
+            "name": "Milchnudeln",
+            "price": 380
+          },
+          {
+            "name": "Chili con Carne mit Reis",
+            "price": 450
+          }
+        ]
+      },
+      {
+        "provider": "Küstenmühle",
+        "date": "2020-08-21",
+        "dishes": [
+          {
+            "name": "Spargelsuppe mit Spargelspitzen und Baguette",
+            "price": 330
+          },
+          {
+            "name": "Gefüllte Tomaten auf Bandnudeln und Tomatensauce",
+            "price": 450
+          },
+          {
+            "name": "Geflügelleber mit Zwiebeln, Kartoffelstampf und Gewürzgurke",
+            "price": 480
+          },
+          {
+            "name": "Schweineroulade „Hausfrauenart“ an Wirsing in Rahm und gebratene Kloßecken",
+            "price": 550
+          }
+        ]
+      }
+    ]
+  },
+  "35": {
+    "2020-08-24": [
+      {
+        "provider": "Insa",
+        "date": "2020-08-24",
+        "dishes": [
+          {
+            "name": "gebackener Blumenkohl-Käse-Stern mit Sauce Hollandaise dazu Petersilienkartoffeln und Möhrensalat",
+            "price": 400
+          },
+          {
+            "name": "Hähnchenbrust Hawaii überbacken mit Ananas und Käse dazu fruchtige Currysoße und Reis",
+            "price": 450
+          }
+        ]
+      }
+    ],
+    "2020-08-25": [
+      {
+        "provider": "Insa",
+        "date": "2020-08-25",
+        "dishes": [
+          {
+            "name": "Kräuterrührei mit Buttergemüse und Stampfkartoffeln",
+            "price": 400
+          },
+          {
+            "name": "Nudeln Bolognese mit Parmesan",
+            "price": 420
+          }
+        ]
+      }
+    ],
+    "2020-08-26": [
+      {
+        "provider": "Insa",
+        "date": "2020-08-26",
+        "dishes": [
+          {
+            "name": "schwäbische Käsespätzle mit Röstzwiebeln und Blattsalat",
+            "price": 400
+          },
+          {
+            "name": "Bratwurst mit Mischgemüse und Petersilienkartoffeln",
+            "price": 420
+          }
+        ]
+      }
+    ],
+    "2020-08-27": [
+      {
+        "provider": "Insa",
+        "date": "2020-08-27",
+        "dishes": [
+          {
+            "name": "Vollkornnudeln mit Sommergemüse (Möhren, Zuckerschoten, Kohlrabi) in leichter Rahmsoße mit bunter Kresse",
+            "price": 420
+          },
+          {
+            "name": "Fischfrikadelle mit Senf-Dill-Soße dazu Kartoffelspalten und Gurkensalat",
+            "price": 420
+          }
+        ]
+      }
+    ],
+    "2020-08-28": [
+      {
+        "provider": "Insa",
+        "date": "2020-08-28",
+        "dishes": [
+          {
+            "name": "Kartoffelpuffer mit Apfelmus oder Zucker",
+            "price": 380
+          },
+          {
+            "name": "Kasslerbraten mit Bohnen und Petersilienkartoffeln",
+            "price": 500
+          }
+        ]
+      }
+    ]
+  }
+}

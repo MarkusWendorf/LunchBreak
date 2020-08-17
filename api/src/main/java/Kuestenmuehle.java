@@ -18,20 +18,36 @@ import java.util.Map;
 
 public class Kuestenmuehle implements MenuProvider {
 
-    public Map<LocalDate, Menu> getMenu() throws IOException {
-        int week = LocalDate.now().get(WeekFields.of(Locale.GERMANY).weekOfWeekBasedYear());
+    public Map<LocalDate, Menu> getMenu() {
+        Map<LocalDate, Menu> menus = new HashMap<>();
+
+        try {
+            for (int i = 0; i < 3; i++) {
+                int week = LocalDate.now().plusWeeks(i).get(WeekFields.of(Locale.GERMANY).weekOfWeekBasedYear());
+                getMenu(menus, week);
+            }
+        } catch (IOException ex) {
+            return menus;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return menus;
+        }
+
+        return menus;
+    }
+
+    private void getMenu(Map<LocalDate, Menu> menusByDay, int week) throws IOException {
         PDDocument pdfDocument = downloadPDF("https://www.kuestenmuehle.de/files/bilder/pdf/speiseplan-kw" + week + ".pdf");
         ObjectExtractor oe = new ObjectExtractor(pdfDocument);
 
         Page page = oe.extract(1);
         SpreadsheetExtractionAlgorithm se = new SpreadsheetExtractionAlgorithm();
         List<? extends Table> tables = se.extract(page);
-
         Table table = tables.get(0);
-        Map<LocalDate, Menu> menus = new HashMap<>();
 
         for (int i = 0; i < table.getRowCount(); i++) {
-            Menu menu = new Menu("Küstenmühle");
+            LocalDate date = getDateByShorthand(getText(table.getCell(i, 0)), week);
+            Menu menu = new Menu("Küstenmühle", date);
 
             for (int j = 1; j < table.getColCount(); j++) {
                 String dishName = getText(table.getCell(i, j));
@@ -40,12 +56,10 @@ public class Kuestenmuehle implements MenuProvider {
                 menu.addDish(dish);
             }
 
-            LocalDate date = getDateByShorthand(getText(table.getCell(i, 0)));
-            menus.put(date, menu);
+            menusByDay.put(date, menu);
         }
 
         pdfDocument.close();
-        return menus;
     }
 
     private String getText(RectangularTextContainer textContainer) {
@@ -58,14 +72,16 @@ public class Kuestenmuehle implements MenuProvider {
 
         return sb.toString().trim()
                 .replaceAll("- ", "-")
+                .replaceAll("-([a-z])", "$1")
                 .replaceAll("\\s(.{1,2},)+(.{1,2}),?$", "");
     }
 
-    private LocalDate getDateByShorthand(String shorthand) {
-        LocalDate today = LocalDate.now();
-        LocalDate monday = today.getDayOfWeek().equals(DayOfWeek.MONDAY) ? today : today.with(TemporalAdjusters.previous(DayOfWeek.MONDAY));
+    private LocalDate getDateByShorthand(String shorthand, int week) {
+        LocalDate mondayOfWeek = LocalDate.now().with(WeekFields.ISO.weekOfWeekBasedYear(), week)
+                .with(WeekFields.of(Locale.GERMANY).getFirstDayOfWeek());
+
         DayOfWeek dayOfWeek = getDayOfWeekByShorthand(shorthand);
-        return dayOfWeek.equals(DayOfWeek.MONDAY) ? monday : monday.with(TemporalAdjusters.next(dayOfWeek));
+        return mondayOfWeek.with(TemporalAdjusters.nextOrSame(dayOfWeek));
     }
 
     private DayOfWeek getDayOfWeekByShorthand(String shorthand) {

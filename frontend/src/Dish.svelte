@@ -1,14 +1,13 @@
 <script lang="ts">
-    import type { Dish } from "./model/Dish";
+  import type { IDish } from "./interfaces/interfaces";
 
-    export let dish: Dish;
+  export let dish: IDish;
 
-    const formatter = new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" });
-    const price = formatter.format(dish.price / 100);
+  const formatter = new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" });
+  const price = formatter.format(dish.price / 100);
 </script>
 
-<div class="py-1 px-3 tracking-tight">{dish.name} ({price})</div>
+<div class="tracking-tight fade-in">{dish.name} ({price})</div>
 
 <style>
-
 </style>

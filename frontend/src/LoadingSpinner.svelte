@@ -1,10 +1,11 @@
 <style>
   .sk-folding-cube {
-    margin: 4rem auto;
-    width: 40px;
-    height: 40px;
-    position: relative;
-    transform: rotateZ(45deg);
+    width: 2.5rem;
+    height: 2.5rem;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: rotateZ(45deg) translate(-50%, -50%);
   }
 
   .sk-folding-cube .sk-cube {

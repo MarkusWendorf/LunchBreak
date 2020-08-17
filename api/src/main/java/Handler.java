@@ -1,12 +1,13 @@
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
-import com.amazonaws.services.lambda.runtime.events.CloudWatchLogsEvent;
 import com.amazonaws.services.lambda.runtime.events.ScheduledEvent;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import dto.Menu;
 
 import java.io.ByteArrayInputStream;
@@ -14,34 +15,49 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.temporal.WeekFields;
 import java.util.*;
 
 public class Handler implements RequestHandler<ScheduledEvent, Void> {
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) throws IOException {
+
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
+        mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+        String s = mapper.writeValueAsString(getMenusForCurrentWeek(Arrays.asList(new Insa(), new Kuestenmuehle())));
+
+        System.out.println(s);
+
+
     }
 
-    private static Collection<List<Menu>> getMenusForCurrentWeek(List<MenuProvider> providers) throws IOException {
+    private static Map<Integer,  Map<LocalDate, List<Menu>>> getMenusForCurrentWeek(List<MenuProvider> providers) throws IOException {
         // tree map for ordering
-        Map<LocalDate, List<Menu>> combined = new TreeMap<>();
+        Map<Integer,  Map<LocalDate, List<Menu>>> kw = new TreeMap<>();
 
+        // combine menus from different providers by week and date
         for (MenuProvider provider : providers) {
             Map<LocalDate, Menu> menusByDay = provider.getMenu();
 
             for (Map.Entry<LocalDate, Menu> menu : menusByDay.entrySet()) {
-                List<Menu> existingMenus = combined.computeIfAbsent(menu.getKey(), k -> new ArrayList<>());
-                existingMenus.add(menu.getValue());
+                int week = menu.getKey().get(WeekFields.of(Locale.GERMANY).weekOfWeekBasedYear());
+                Map<LocalDate, List<Menu>> byDay = kw.computeIfAbsent(week, k -> new TreeMap<>());
+                List<Menu> menus = byDay.computeIfAbsent(menu.getKey(), k -> new ArrayList<>());
+                menus.add(menu.getValue());
             }
         }
 
-        return combined.values();
+        return kw;
     }
 
     @Override
     public Void handleRequest(ScheduledEvent event, Context context) {
         try {
-            Collection<List<Menu>> combined = getMenusForCurrentWeek(Arrays.asList(new Insa(), new Kuestenmuehle()));
+            Map<Integer,  Map<LocalDate, List<Menu>>> combined = getMenusForCurrentWeek(Arrays.asList(new Insa(), new Kuestenmuehle()));
+
             ObjectMapper mapper = new ObjectMapper();
+            mapper.registerModule(new JavaTimeModule());
+            mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
 
             ByteArrayOutputStream out = new ByteArrayOutputStream();
             mapper.writeValue(out, combined);
@@ -49,7 +65,7 @@ public class Handler implements RequestHandler<ScheduledEvent, Void> {
 
             ObjectMetadata metadata = new ObjectMetadata();
             metadata.setContentLength(data.length);
-            metadata.setCacheControl("max-age=3600");
+            metadata.setCacheControl("max-age=1800");
             InputStream input = new ByteArrayInputStream(data);
 
             AmazonS3 s3 = AmazonS3ClientBuilder.standard().withRegion(Regions.EU_CENTRAL_1).build();

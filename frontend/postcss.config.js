@@ -1,3 +1,5 @@
+const production = !process.env.ROLLUP_WATCH;
+
 const purgecss = require("@fullhuman/postcss-purgecss")({
   content: ["./src/**/*.svelte"],
   css: ["./public/global.css"],
@@ -7,6 +9,6 @@ const purgecss = require("@fullhuman/postcss-purgecss")({
 module.exports = {
   plugins: [
     require("tailwindcss"),
-    ...[purgecss]
+    ...(production ? [purgecss] : [])
   ],
 };

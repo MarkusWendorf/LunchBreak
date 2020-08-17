@@ -1,14 +1,19 @@
 package dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Menu {
     private String provider;
+    private LocalDate date;
     private List<Dish> dishes;
 
-    public Menu(String provider) {
+    public Menu(String provider, LocalDate date) {
         this.provider = provider;
+        this.date = date;
         this.dishes = new ArrayList<>();
     }
 
@@ -30,6 +35,10 @@ public class Menu {
 
     public void addDish(Dish dish) {
         this.dishes.add(dish);
+    }
+
+    public LocalDate getDate() {
+        return date;
     }
 
     @Override
