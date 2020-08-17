@@ -7,7 +7,7 @@
   const price = formatter.format(dish.price / 100);
 </script>
 
-<div class="tracking-tight fade-in">{dish.name} ({price})</div>
+<div class="tracking-tight">{dish.name} ({price})</div>
 
 <style>
 </style>

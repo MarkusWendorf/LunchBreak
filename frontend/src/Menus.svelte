@@ -2,8 +2,6 @@
   import type { IMenu, MenusByWeek } from "./interfaces/interfaces";
   import format from "date-fns/format";
   import Dish from "./Dish.svelte";
-  import { flip } from "svelte/animate";
-  import { scale } from "svelte/transition";
 
   export let menus: MenusByWeek;
   export let dayOfWeek: number;
@@ -15,13 +13,13 @@
 </script>
 
 {#if menuList.length > 0}
-  {#each menuList as menu, i (menu.provider)}
-    <div animate:flip>
-      <div class="relative flex fade-in items-center mt-1">
+  {#each menuList as menu, i (menu)}
+    <div class="fade-in">
+      <div class="relative flex items-center mt-1">
         <h2 class="flex-1 font-bold pr-4">{menu.provider}</h2>
         <div class="hairline bg-white opacity-25" style="height: 1px" />
         {#if i === 0}
-          <span class="text-white pl-4" style="font-size: 0.75rem" in:scale>
+          <span class="text-white pl-4" style="font-size: 0.75rem">
             {format(new Date(menu.date), "dd.MM.yyyy")}
           </span>
         {/if}

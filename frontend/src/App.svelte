@@ -41,11 +41,11 @@
       <div class="w-12 h-12 m-auto py-3 flex justify-center items-center flex-col cursor-pointer" on:click={nextOrPrevWeek}>
         <div>
           {#if selectedWeek > currentWeek }
-            <svg class="w-4 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+            <svg class="w-4 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
               <path d="M10 6 L2 16 10 26 M2 16 L30 16" />
             </svg>
           {:else}
-            <svg class="w-4 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+            <svg class="w-4 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
               <path d="M22 6 L30 16 22 26 M30 16 L2 16" />
             </svg>
           {/if}
