@@ -56,7 +56,7 @@
   </div>
   
   {#if selectedDay >= 0 && selectedDay < 5}
-    <div class="flex-1 px-4 pt-2 md:pt-10 perf" style="will-change: transform;">
+    <div class="flex-1 px-4 pt-2 md:pt-10">
       {#await lunchData}
         <LoadingSpinner/>
       {:then menus}
@@ -119,26 +119,20 @@
   }
 
   .fade-in {
+    will-change: opacity;
     backface-visibility: hidden;
     transform: translate3d(0,0,0);
     transform: translateZ(0);
     animation: text-focus-in 350ms cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    animation-delay: 300ms;
   }
 
   @keyframes text-focus-in {
     0% {
-      filter: blur(5px);
       opacity: 0;
     }
     100% {
-      filter: blur(0px);
       opacity: 1;
     }
-  }
-
-  .perf {
-    backface-visibility: hidden;
-    transform: translate3d(0,0,0);
-    transform: translateZ(0);
   }
 </style>

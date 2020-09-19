@@ -20,15 +20,14 @@ import java.util.*;
 
 public class Handler implements RequestHandler<ScheduledEvent, Void> {
     public static void main(String[] args) throws IOException {
-
+        /*
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule());
         mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
         String s = mapper.writeValueAsString(getMenusForCurrentWeek(Arrays.asList(new Insa(), new Kuestenmuehle())));
 
         System.out.println(s);
-
-
+        */
     }
 
     private static Map<Integer,  Map<LocalDate, List<Menu>>> getMenusForCurrentWeek(List<MenuProvider> providers) throws IOException {

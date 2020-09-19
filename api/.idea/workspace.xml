@@ -2,25 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ff67ed3-a508-4a1e-85a9-8da01c25665d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_11_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/api.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/api.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Handler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Handler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Insa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Insa.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Kuestenmuehle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Kuestenmuehle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dto/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cdk/bin/cdk.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../cdk/bin/cdk.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../cdk/lib/cdk-stack.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../cdk/lib/cdk-stack.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.prettierrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/postcss.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/postcss.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/public/favicon.png" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/public/favicon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/App.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/Dish.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Dish.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/LoadingSpinner.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/LoadingSpinner.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/model/Dish.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/model/Menu.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Menus.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Menus.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/api.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -131,6 +121,7 @@
       <workItem from="1597513652040" duration="8395000" />
       <workItem from="1597569357411" duration="5275000" />
       <workItem from="1597593960406" duration="2572000" />
+      <workItem from="1598372444535" duration="2209000" />
     </task>
     <servers />
   </component>

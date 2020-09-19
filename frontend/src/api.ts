@@ -7,7 +7,7 @@ import type { MenusByWeek } from "./interfaces/interfaces";
 
 
 export async function getLunchData(): Promise<MenusByWeek> {
-	const lunchdata = "https://d1sj41qgcumq4m.cloudfront.net/lunchdata.json";
+	const lunchdata = "https://d127kst3f1l6wp.cloudfront.net/lunchdata.json";
 	const headers = new Headers();
 	headers.append("pragma", "no-cache");
 	headers.append("cache-control", "no-cache");

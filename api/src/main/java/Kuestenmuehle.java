@@ -43,20 +43,22 @@ public class Kuestenmuehle implements MenuProvider {
         Page page = oe.extract(1);
         SpreadsheetExtractionAlgorithm se = new SpreadsheetExtractionAlgorithm();
         List<? extends Table> tables = se.extract(page);
-        Table table = tables.get(0);
 
-        for (int i = 0; i < table.getRowCount(); i++) {
-            LocalDate date = getDateByShorthand(getText(table.getCell(i, 0)), week);
-            Menu menu = new Menu("Küstenmühle", date);
+        for (Table table : tables) {
 
-            for (int j = 1; j < table.getColCount(); j++) {
-                String dishName = getText(table.getCell(i, j));
-                int price = parsePrice(getText(table.getCell(0, j)));
-                Dish dish = new Dish(dishName, price);
-                menu.addDish(dish);
+            for (int i = 0; i < table.getRowCount(); i++) {
+                LocalDate date = getDateByShorthand(getText(table.getCell(i, 0)), week);
+                Menu menu = new Menu("Küstenmühle", date);
+
+                for (int j = 1; j < table.getColCount(); j++) {
+                    String dishName = getText(table.getCell(i, j));
+                    int price = parsePrice(getText(table.getCell(0, j)));
+                    Dish dish = new Dish(dishName, price);
+                    menu.addDish(dish);
+                }
+
+                menusByDay.put(date, menu);
             }
-
-            menusByDay.put(date, menu);
         }
 
         pdfDocument.close();

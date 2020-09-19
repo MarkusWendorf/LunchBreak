@@ -29,6 +29,7 @@ export class CdkStack extends cdk.Stack {
       this,
       "LunchBreakCloudFront",
       {
+        comment: "LunchBreak",
         originConfigs: [
           {
             s3OriginSource: {
