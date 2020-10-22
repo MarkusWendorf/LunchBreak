@@ -3,14 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9ff67ed3-a508-4a1e-85a9-8da01c25665d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Handler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Handler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Kuestenmuehle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Kuestenmuehle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cdk/bin/cdk.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../cdk/bin/cdk.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cdk/lib/cdk-stack.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../cdk/lib/cdk-stack.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/App.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Dish.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Dish.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Menus.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Menus.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/api.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,7 +42,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects/shop" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -122,6 +114,8 @@
       <workItem from="1597569357411" duration="5275000" />
       <workItem from="1597593960406" duration="2572000" />
       <workItem from="1598372444535" duration="2209000" />
+      <workItem from="1603294014725" duration="159000" />
+      <workItem from="1603294187412" duration="75000" />
     </task>
     <servers />
   </component>

@@ -3,6 +3,7 @@
   import Menus from "./Menus.svelte";
   import { getLunchData, getCurrentDay, getCurrentWeek } from "./api";
 
+  const fullHeight = window.innerHeight;
   const weekDays = ["Mo", "Di", "Mi", "Do", "Fr"];
   let lunchData = getLunchData();
   let selectedDay: number = getCurrentDay(); 
@@ -24,12 +25,26 @@
 
 </script>
 
-<main class="flex flex-col md:flex-row">
+<main class="flex flex-col md:flex-row md:flex-row-reverse">
+  
+  {#if selectedDay >= 0 && selectedDay < 5}
+    <div class="flex-1 px-4 pt-2 md:pt-10 overflow-y-scroll">
+      {#await lunchData}
+        <LoadingSpinner/>
+      {:then menus}
+        <Menus dayOfWeek={selectedDay} menus={menus} week={selectedWeek}/>
+      {:catch error}
+        <p style="color: red">{error.message}</p>
+      {/await}
+    </div>
+  {:else}
+    <p>Wochenende</p>
+  {/if}
 
   <div
-    class="fixed w-full md:relative md:w-auto bottom-0 flex justify-between px-4 py-4 md:flex-col md:px-6 md:py-6">
+    class="w-full md:h-0 md:relative md:w-auto bottom-0 flex justify-between px-4 py-2 md:flex-col md:px-6 md:py-6">
     {#each weekDays as day, i}
-      <div class="flex-1 py-2" on:click={() => setDay(day)}>
+      <div class="py-2" on:click={() => setDay(day)}>
         <div
           class="w-12 h-12 flex items-center justify-center m-auto py-3 text-center neo font-sans"
           class:active={selectedDay === i}>
@@ -54,20 +69,6 @@
       </div>
     </div>
   </div>
-  
-  {#if selectedDay >= 0 && selectedDay < 5}
-    <div class="flex-1 px-4 pt-2 md:pt-10">
-      {#await lunchData}
-        <LoadingSpinner/>
-      {:then menus}
-        <Menus dayOfWeek={selectedDay} menus={menus} week={selectedWeek}/>
-      {:catch error}
-        <p style="color: red">{error.message}</p>
-      {/await}
-    </div>
-  {:else}
-    <p>Wochenende</p>
-  {/if}
 </main>
 
 <style global>
@@ -97,6 +98,8 @@
     font-size: 17px;
     font-family: "Expletus Sans", sans-serif;
   }
+
+  html, body, main { height: 100% }
 
   h1,
   h2,
