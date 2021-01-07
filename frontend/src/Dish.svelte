@@ -8,6 +8,3 @@
 </script>
 
 <div class="tracking-tight fade-in">{dish.name} ({price})</div>
-
-<style>
-</style>

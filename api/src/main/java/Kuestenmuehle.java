@@ -37,7 +37,7 @@ public class Kuestenmuehle implements MenuProvider {
     }
 
     private void getMenu(Map<LocalDate, Menu> menusByDay, int week) throws IOException {
-        PDDocument pdfDocument = downloadPDF("https://www.kuestenmuehle.de/files/bilder/pdf/speiseplan-kw" + week + ".pdf");
+        PDDocument pdfDocument = Util.downloadPDF("https://www.kuestenmuehle.de/files/bilder/pdf/speiseplan-kw" + week + ".pdf");
         ObjectExtractor oe = new ObjectExtractor(pdfDocument);
 
         Page page = oe.extract(1);
@@ -46,13 +46,17 @@ public class Kuestenmuehle implements MenuProvider {
 
         for (Table table : tables) {
 
-            for (int i = 0; i < table.getRowCount(); i++) {
+            for (int i = 1; i < table.getRowCount(); i++) {
                 LocalDate date = getDateByShorthand(getText(table.getCell(i, 0)), week);
+                if (date == null) continue;
+
                 Menu menu = new Menu("Küstenmühle", date);
 
                 for (int j = 1; j < table.getColCount(); j++) {
                     String dishName = getText(table.getCell(i, j));
-                    int price = parsePrice(getText(table.getCell(0, j)));
+                    if (dishName.isEmpty()) continue;
+
+                    int price = Util.parsePrice(getText(table.getCell(0, j)));
                     Dish dish = new Dish(dishName, price);
                     menu.addDish(dish);
                 }
@@ -83,6 +87,8 @@ public class Kuestenmuehle implements MenuProvider {
                 .with(WeekFields.of(Locale.GERMANY).getFirstDayOfWeek());
 
         DayOfWeek dayOfWeek = getDayOfWeekByShorthand(shorthand);
+        if (dayOfWeek == null) return null;
+
         return mondayOfWeek.with(TemporalAdjusters.nextOrSame(dayOfWeek));
     }
 
@@ -96,21 +102,10 @@ public class Kuestenmuehle implements MenuProvider {
                 return DayOfWeek.WEDNESDAY;
             case "do":
                 return DayOfWeek.THURSDAY;
-            default:
+            case "fr":
                 return DayOfWeek.FRIDAY;
+            default:
+                return null;
         }
-    }
-
-    private PDDocument downloadPDF(String pdfUrl) throws IOException {
-        URL url = new URL(pdfUrl);
-        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-        con.setRequestMethod("GET");
-        con.connect();
-
-        return PDDocument.load(con.getInputStream());
-    }
-
-    private int parsePrice(String price) {
-        return Integer.parseInt(price.replaceAll("[\\s€,]", ""));
     }
 }

@@ -13,16 +13,17 @@ export class CdkStack extends cdk.Stack {
     super(scope, id, props);
 
     // Web
-
     const bucket = new s3.Bucket(this, "LunchBreakWeb", {
-      cors: [{
-        allowedMethods: [s3.HttpMethods.GET],
-        allowedOrigins: ["*"],
-        allowedHeaders: ["*"]
-      }]
+      cors: [
+        {
+          allowedMethods: [s3.HttpMethods.GET],
+          allowedOrigins: ["*"],
+          allowedHeaders: ["*"],
+        },
+      ],
     });
-    const oai = new cloudfront.OriginAccessIdentity(this, "LunchBreakWebOAI");
 
+    const oai = new cloudfront.OriginAccessIdentity(this, "LunchBreakWebOAI");
     bucket.grantRead(oai);
 
     const distribution = new cloudfront.CloudFrontWebDistribution(
@@ -36,15 +37,23 @@ export class CdkStack extends cdk.Stack {
               s3BucketSource: bucket,
               originAccessIdentity: oai,
             },
-            behaviors: [{ 
-              isDefaultBehavior: true, 
-              allowedMethods: cloudfront.CloudFrontAllowedMethods.GET_HEAD_OPTIONS,
-              cachedMethods: cloudfront.CloudFrontAllowedCachedMethods.GET_HEAD_OPTIONS,
-              forwardedValues: {
-                headers: ["Origin", "Access-Control-Request-Headers", "Access-Control-Request-Method"],
-                queryString: true,
-              }
-            }],
+            behaviors: [
+              {
+                isDefaultBehavior: true,
+                allowedMethods:
+                  cloudfront.CloudFrontAllowedMethods.GET_HEAD_OPTIONS,
+                cachedMethods:
+                  cloudfront.CloudFrontAllowedCachedMethods.GET_HEAD_OPTIONS,
+                forwardedValues: {
+                  headers: [
+                    "Origin",
+                    "Access-Control-Request-Headers",
+                    "Access-Control-Request-Method",
+                  ],
+                  queryString: true,
+                },
+              },
+            ],
           },
         ],
       }
@@ -59,13 +68,12 @@ export class CdkStack extends cdk.Stack {
     });
 
     // API
-
     const apiLambda = new lambda.Function(this, "LunchBreakApiLambda", {
       runtime: lambda.Runtime.JAVA_8,
       handler: "Handler::handleRequest",
       code: lambda.Code.fromAsset("../api/target/lunch-1.0.jar"),
       memorySize: 2048,
-      timeout: Duration.seconds(10),
+      timeout: Duration.seconds(20),
       environment: { bucket: bucket.bucketName },
     });
 

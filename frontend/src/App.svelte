@@ -3,32 +3,35 @@
   import Menus from "./Menus.svelte";
   import { getLunchData, getCurrentDay, getCurrentWeek } from "./api";
 
-  const fullHeight = window.innerHeight;
   const weekDays = ["Mo", "Di", "Mi", "Do", "Fr"];
   let lunchData = getLunchData();
   let selectedDay: number = getCurrentDay(); 
   let selectedWeek: number = getCurrentWeek();
   let currentWeek: number = getCurrentWeek();
+  let scrollContainer; 
 
-  const setDay = (day: string) => selectedDay = weekDays.findIndex((v) => v === day);
+  const setDay = (day: string) => {
+    selectedDay = weekDays.findIndex((v) => v === day) + 1;
+    scrollContainer?.scrollTo(0, 0);
+  }
+  
   const nextOrPrevWeek = () => {
     selectedWeek =  selectedWeek > currentWeek ? currentWeek : currentWeek + 1;
-    selectedDay = selectedWeek > currentWeek ? 0 : getCurrentDay();
+    selectedDay = selectedWeek > currentWeek ? 1 : getCurrentDay();
   };
-
-  // auto refresh every hour
+  
+  // auto refresh every half hour
   setInterval(() => {
     selectedDay = getCurrentDay();
     selectedWeek = getCurrentWeek();
     lunchData = getLunchData();
-  }, 60000 * 60);
-
+  }, 60000 * 30);
 </script>
 
 <main class="flex flex-col md:flex-row md:flex-row-reverse">
   
-  {#if selectedDay >= 0 && selectedDay < 5}
-    <div class="flex-1 px-4 pt-2 md:pt-10 overflow-y-scroll">
+  {#if selectedDay < 6}
+    <div class="flex-1 px-4 pt-2 md:pt-10 overflow-y-scroll" bind:this={scrollContainer}>
       {#await lunchData}
         <LoadingSpinner/>
       {:then menus}
@@ -47,7 +50,7 @@
       <div class="py-2" on:click={() => setDay(day)}>
         <div
           class="w-12 h-12 flex items-center justify-center m-auto py-3 text-center neo font-sans"
-          class:active={selectedDay === i}>
+          class:active={selectedDay === i + 1}>
           {day}
         </div>
       </div>

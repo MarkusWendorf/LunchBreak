@@ -20,14 +20,7 @@ import java.util.*;
 
 public class Handler implements RequestHandler<ScheduledEvent, Void> {
     public static void main(String[] args) throws IOException {
-        /*
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.registerModule(new JavaTimeModule());
-        mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
-        String s = mapper.writeValueAsString(getMenusForCurrentWeek(Arrays.asList(new Insa(), new Kuestenmuehle())));
-
-        System.out.println(s);
-        */
+        // Map<Integer,  Map<LocalDate, List<Menu>>> combined = getMenusForCurrentWeek(Arrays.asList(new Kuestenmuehle()));
     }
 
     private static Map<Integer,  Map<LocalDate, List<Menu>>> getMenusForCurrentWeek(List<MenuProvider> providers) throws IOException {
@@ -37,10 +30,12 @@ public class Handler implements RequestHandler<ScheduledEvent, Void> {
         // combine menus from different providers by week and date
         for (MenuProvider provider : providers) {
             Map<LocalDate, Menu> menusByDay = provider.getMenu();
+            if (menusByDay == null) continue;
 
             for (Map.Entry<LocalDate, Menu> menu : menusByDay.entrySet()) {
                 int week = menu.getKey().get(WeekFields.of(Locale.GERMANY).weekOfWeekBasedYear());
                 Map<LocalDate, List<Menu>> byDay = kw.computeIfAbsent(week, k -> new TreeMap<>());
+
                 List<Menu> menus = byDay.computeIfAbsent(menu.getKey(), k -> new ArrayList<>());
                 menus.add(menu.getValue());
             }
@@ -52,7 +47,8 @@ public class Handler implements RequestHandler<ScheduledEvent, Void> {
     @Override
     public Void handleRequest(ScheduledEvent event, Context context) {
         try {
-            Map<Integer,  Map<LocalDate, List<Menu>>> combined = getMenusForCurrentWeek(Arrays.asList(new Insa(), new Kuestenmuehle()));
+            List<MenuProvider> menuProviders = Arrays.asList(new Insa(), new Kuestenmuehle(), new BlauerEselBistro());
+            Map<Integer,  Map<LocalDate, List<Menu>>> combined = getMenusForCurrentWeek(menuProviders);
 
             ObjectMapper mapper = new ObjectMapper();
             mapper.registerModule(new JavaTimeModule());

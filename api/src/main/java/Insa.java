@@ -17,7 +17,12 @@ public class Insa implements MenuProvider {
 
         try {
             for (int i = 0; i < 3; i++) {
-                String week = LocalDate.now().plusWeeks(i).with(WeekFields.of(Locale.GERMANY).getFirstDayOfWeek()).toString();
+                String week = LocalDate
+                        .now()
+                        .plusWeeks(i)
+                        .with(WeekFields.of(Locale.GERMANY).getFirstDayOfWeek())
+                        .toString();
+
                 getMenu(menus, week);
             }
         } catch (IOException ex) {

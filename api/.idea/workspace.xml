@@ -1,10 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="9ff67ed3-a508-4a1e-85a9-8da01c25665d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/BlauerEselBistro.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/asd.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Handler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Handler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Insa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Insa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Kuestenmuehle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Kuestenmuehle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cdk/lib/cdk-stack.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../cdk/lib/cdk-stack.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cdk/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../cdk/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/postcss.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/postcss.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/rollup.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/rollup.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/App.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Dish.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Dish.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/LoadingSpinner.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/LoadingSpinner.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Menus.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Menus.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/tsconfig.json" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,8 +35,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -28,36 +50,23 @@
       </set>
     </option>
   </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
-    </option>
-  </component>
   <component name="ProjectId" id="1fjpLEUXEmjQqZUGvcgLE4LbwLD" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects/shop" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Application.Handler">
     <configuration name="Handler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -85,6 +94,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -116,23 +126,33 @@
       <workItem from="1598372444535" duration="2209000" />
       <workItem from="1603294014725" duration="159000" />
       <workItem from="1603294187412" duration="75000" />
+      <workItem from="1609932889148" duration="183000" />
+      <workItem from="1609933094924" duration="22283000" />
+      <workItem from="1610021337226" duration="798000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="((HashMap.Node)((HashMap)menus).entrySet().toArray()[0]).getValue()" custom="java.util.HashMap.Node,java.util.HashMap" />
+        <watch expression="((TreeMap.Entry)((TreeMap)combined).entrySet().toArray()[0]).getKey()" custom="java.util.TreeMap,java.util.TreeMap.Entry" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
