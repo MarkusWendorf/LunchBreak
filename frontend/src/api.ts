@@ -27,9 +27,9 @@ export function getCurrentDay() {
  * Returns the current week number, if it's Saturday / Sunday returns the next week
  */
 export function getCurrentWeek() {
-  const today = dayjs();
-  const day = getCurrentDay();
-  return day > 5 ? today.add(1, "week").isoWeek() : today.isoWeek();
+  const currentDate = dayjs();
+  const day = currentDate.isoWeekday();
+  return day > 5 ? currentDate.add(1, "week").isoWeek() : currentDate.isoWeek();
 }
 
 async function exponentialBackoff<T>(
