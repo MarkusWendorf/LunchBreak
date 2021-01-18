@@ -5,27 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ff67ed3-a508-4a1e-85a9-8da01c25665d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/BlauerEselBistro.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Util.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/asd.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/BlauerEselBistro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BlauerEselBistro.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Handler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Handler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Insa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Insa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Kuestenmuehle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Kuestenmuehle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cdk/lib/cdk-stack.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../cdk/lib/cdk-stack.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cdk/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../cdk/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/postcss.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/postcss.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/rollup.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/rollup.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/App.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Dish.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Dish.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/LoadingSpinner.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/LoadingSpinner.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Menus.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Menus.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dto/Dish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/Dish.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +111,7 @@
       <workItem from="1603294187412" duration="75000" />
       <workItem from="1609932889148" duration="183000" />
       <workItem from="1609933094924" duration="22283000" />
-      <workItem from="1610021337226" duration="798000" />
+      <workItem from="1610021337226" duration="6605000" />
     </task>
     <servers />
   </component>

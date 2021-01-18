@@ -20,7 +20,7 @@ import java.util.*;
 
 public class Handler implements RequestHandler<ScheduledEvent, Void> {
     public static void main(String[] args) throws IOException {
-        // Map<Integer,  Map<LocalDate, List<Menu>>> combined = getMenusForCurrentWeek(Arrays.asList(new Kuestenmuehle()));
+        Map<Integer,  Map<LocalDate, List<Menu>>> combined = getMenusForCurrentWeek(Arrays.asList(new BlauerEselBistro()));
     }
 
     private static Map<Integer,  Map<LocalDate, List<Menu>>> getMenusForCurrentWeek(List<MenuProvider> providers) throws IOException {

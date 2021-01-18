@@ -1,27 +1,24 @@
 import dto.Dish;
 import dto.Menu;
 import org.apache.pdfbox.pdmodel.PDDocument;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-import technology.tabula.*;
+import technology.tabula.ObjectExtractor;
+import technology.tabula.Page;
+import technology.tabula.RectangularTextContainer;
+import technology.tabula.Table;
 import technology.tabula.extractors.BasicExtractionAlgorithm;
-import technology.tabula.extractors.SpreadsheetExtractionAlgorithm;
 
 import java.io.IOException;
-import java.time.Duration;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalAmount;
 import java.time.temporal.WeekFields;
 import java.util.*;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class BlauerEselBistro implements MenuProvider {
 
     Pattern priceRegex = Pattern.compile("\\d+([.,]\\d+)?€");
+    DecimalFormat roundDecimal = new DecimalFormat("#.#");
 
     @Override
     public Map<LocalDate, Menu> getMenu() {
@@ -50,7 +47,7 @@ public class BlauerEselBistro implements MenuProvider {
 
     private void getMenu(Map<LocalDate, Menu> menusByDay, int year, String month, int week, LocalDate firstDayOfWeek) throws IOException {
         String pdf = "https://blauer-esel-bistro.de/wp-content/uploads/" + year + "/" + month + "/BISTRO-Speisekarte-KW" + week + ".pdf";
-
+        System.out.println(pdf);
         PDDocument pdfDocument = Util.downloadPDF(pdf);
         ObjectExtractor oe = new ObjectExtractor(pdfDocument);
 
@@ -60,29 +57,28 @@ public class BlauerEselBistro implements MenuProvider {
         List<Dish> dishes = new ArrayList<>();
 
         for (Table table : tables) {
-            for (int i = 0; i < table.getRowCount(); i++) {
-                String line = table.getCell(i, 0).getText().replaceAll("[\\s+/]", " ");
+            List<List<RectangularTextContainer>> rows = table.getRows();
+            List<Dish> tempDishes = new ArrayList<>();
 
-                if (line.contains("€")) { // Ganzer Knusper-Broiler 17€
-                    Matcher matcher = priceRegex.matcher(line);
-                    if (!matcher.find()) {
-                        continue;
+            for (List<RectangularTextContainer> row : rows) {
+                row.removeIf((c) -> c.getText().equals(""));
+
+                if (row.size() == 2) {
+                    Dish d = new Dish(row.get(0).getText(), Util.parsePrice(row.get(1).getText()) * 100);
+                    tempDishes.add(d);
+                }
+
+                if (row.size() == 1) {
+                    RectangularTextContainer container = row.get(0);
+                    if (!isDetailText(container)) continue;
+
+                    for (Dish d : tempDishes) {
+                        String details = container.getText().replaceAll("\\s+\\|\\s+", ", ");
+                        d.setName(d.getName() + " - " + details);
+                        dishes.add(d);
                     }
 
-                    String price = matcher.group();
-                    String dishName = line.replace(price, "").trim();
-
-                    int offset = i + 1;
-                    String detailLine; // Fritten | Cole Slaw | Orange-Curry Mayo
-                    while ((detailLine = table.getCell(offset, 0).getText()).contains("€")) {
-                        offset += 1;
-                    }
-
-                    String details = detailLine.replaceAll("\\s+\\|\\s+", ", ");
-
-                    Dish dish = new Dish(dishName + " - " + details, Util.parsePrice(price) * 100);
-                    System.out.println(dish.getName());
-                    dishes.add(dish);
+                    tempDishes.clear();
                 }
             }
         }
@@ -97,5 +93,17 @@ public class BlauerEselBistro implements MenuProvider {
             menusByDay.put(currentDay, menu);
             currentDay = currentDay.plus(1, ChronoUnit.DAYS);
         }
+    }
+
+    private boolean isEqual(double a, double b) {
+        return Math.abs(a - b) <= 0.1;
+    }
+
+    private boolean isDishText(RectangularTextContainer text) {
+        return isEqual(text.getHeight(), 7.2);
+    }
+
+    private boolean isDetailText(RectangularTextContainer text) {
+        return isEqual(text.getHeight(), 6.0);
     }
 }

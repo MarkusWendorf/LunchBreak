@@ -27,6 +27,6 @@ public class Dish {
 
     @Override
     public String toString() {
-        return name + "(" + String.format("%.2f", price / 100.0) + "€)";
+        return name + " (" + String.format("%.2f", price / 100.0) + "€)";
     }
 }
