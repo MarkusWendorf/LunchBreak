@@ -1,10 +1,7 @@
 import dto.Dish;
 import dto.Menu;
 import org.apache.pdfbox.pdmodel.PDDocument;
-import technology.tabula.ObjectExtractor;
-import technology.tabula.Page;
-import technology.tabula.RectangularTextContainer;
-import technology.tabula.Table;
+import technology.tabula.*;
 import technology.tabula.extractors.BasicExtractionAlgorithm;
 
 import java.io.IOException;
@@ -13,12 +10,13 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.WeekFields;
 import java.util.*;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class BlauerEselBistro implements MenuProvider {
 
-    Pattern priceRegex = Pattern.compile("\\d+([.,]\\d+)?€");
-    DecimalFormat roundDecimal = new DecimalFormat("#.#");
+    // Example: Bolognese 5,5€
+    Pattern nameAndPriceRegex = Pattern.compile("^(.*?)\\s+(\\d+[.,]?\\d*€)\\s*$");
 
     @Override
     public Map<LocalDate, Menu> getMenu() {
@@ -58,29 +56,39 @@ public class BlauerEselBistro implements MenuProvider {
 
         for (Table table : tables) {
             List<List<RectangularTextContainer>> rows = table.getRows();
-            List<Dish> tempDishes = new ArrayList<>();
 
-            for (List<RectangularTextContainer> row : rows) {
-                row.removeIf((c) -> c.getText().equals(""));
+            for (int i = 0; i < rows.size(); i++) {
+                List<RectangularTextContainer> row = rows.get(i);
+                boolean isLastRow = i == rows.size() - 1;
+                if (row.size() != 1) continue;
 
-                if (row.size() == 2) {
-                    Dish d = new Dish(row.get(0).getText(), Util.parsePrice(row.get(1).getText()) * 100);
-                    tempDishes.add(d);
-                }
+                RectangularTextContainer<TextElement> textContainer = row.get(0);
 
-                if (row.size() == 1) {
-                    RectangularTextContainer container = row.get(0);
-                    if (!isDetailText(container)) continue;
+                if (isDishText(textContainer)) {
+                    String text = Util.cleanString(textContainer.getText());
+                    Matcher matcher = nameAndPriceRegex.matcher(text);
+                    if (!matcher.find()) continue;
 
-                    for (Dish d : tempDishes) {
-                        String details = container.getText().replaceAll("\\s+\\|\\s+", ", ");
-                        d.setName(d.getName() + " - " + details);
+                    Dish d = new Dish(matcher.group(1), Util.parsePrice(matcher.group(2)) * 100);
+                    if (isLastRow) {
                         dishes.add(d);
+                        break;
                     }
 
-                    tempDishes.clear();
+                    List<RectangularTextContainer> nextRow = rows.get(i + 1);
+                    textContainer = nextRow.get(0);
+
+                    if (isDetailText(textContainer)) {
+                        text = Util.cleanString(textContainer.getText());
+                        String details = text.replaceAll("\\s+\\|\\s+", ", ");
+                        d.setName(d.getName() + " - " + details.trim());
+                        i += 1;
+                    }
+
+                    dishes.add(d);
                 }
             }
+
         }
 
         // Sort by price (low to high)
@@ -99,11 +107,23 @@ public class BlauerEselBistro implements MenuProvider {
         return Math.abs(a - b) <= 0.1;
     }
 
-    private boolean isDishText(RectangularTextContainer text) {
-        return isEqual(text.getHeight(), 7.2);
+    private boolean isDishText(RectangularTextContainer<TextElement> text) {
+        return matchesHeight(text, 7.2) && text.getText().contains("€");
     }
 
-    private boolean isDetailText(RectangularTextContainer text) {
-        return isEqual(text.getHeight(), 6.0);
+    private boolean isDetailText(RectangularTextContainer<TextElement> text) {
+        return matchesHeight(text, 6.0);
+    }
+    
+    private boolean matchesHeight(RectangularTextContainer<TextElement> text, double height) {
+        double count = 0;
+        for (TextElement textElement : text.getTextElements()) {
+            if (isEqual(textElement.getHeight(), height)) {
+                count += 1;
+            }
+        }
+
+        // at least 80% of the text elements match the given height
+        return count / text.getTextElements().size() > 0.8;
     }
 }

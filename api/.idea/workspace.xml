@@ -8,7 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/BlauerEselBistro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BlauerEselBistro.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Handler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Handler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dto/Dish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/Dish.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Util.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +66,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/lunch/src/index.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
@@ -112,6 +123,7 @@
       <workItem from="1609932889148" duration="183000" />
       <workItem from="1609933094924" duration="22283000" />
       <workItem from="1610021337226" duration="6605000" />
+      <workItem from="1611667710753" duration="10741000" />
     </task>
     <servers />
   </component>

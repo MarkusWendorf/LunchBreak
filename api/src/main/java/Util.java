@@ -19,4 +19,7 @@ public class Util {
         return Integer.parseInt(price.replaceAll("[\\s€,.]", ""));
     }
 
+    public static String cleanString(String str) {
+        return str.replaceAll("\\R", "");
+    }
 }
