@@ -1,7 +1,9 @@
 import * as cdk from "@aws-cdk/core";
 import * as s3 from "@aws-cdk/aws-s3";
 import * as cloudfront from "@aws-cdk/aws-cloudfront";
+import * as origins from "@aws-cdk/aws-cloudfront-origins";
 import * as s3deploy from "@aws-cdk/aws-s3-deployment";
+import * as acm from "@aws-cdk/aws-certificatemanager";
 import * as lambda from "@aws-cdk/aws-lambda";
 import { Duration } from "@aws-cdk/core";
 import * as iam from "@aws-cdk/aws-iam";
@@ -26,36 +28,22 @@ export class CdkStack extends cdk.Stack {
     const oai = new cloudfront.OriginAccessIdentity(this, "LunchBreakWebOAI");
     bucket.grantRead(oai);
 
-    const distribution = new cloudfront.CloudFrontWebDistribution(
+    const distribution = new cloudfront.Distribution(
       this,
       "LunchBreakCloudFront",
       {
         comment: "LunchBreak",
-        originConfigs: [
-          {
-            s3OriginSource: {
-              s3BucketSource: bucket,
-              originAccessIdentity: oai,
-            },
-            behaviors: [
-              {
-                isDefaultBehavior: true,
-                allowedMethods:
-                  cloudfront.CloudFrontAllowedMethods.GET_HEAD_OPTIONS,
-                cachedMethods:
-                  cloudfront.CloudFrontAllowedCachedMethods.GET_HEAD_OPTIONS,
-                forwardedValues: {
-                  headers: [
-                    "Origin",
-                    "Access-Control-Request-Headers",
-                    "Access-Control-Request-Method",
-                  ],
-                  queryString: true,
-                },
-              },
-            ],
-          },
-        ],
+        defaultRootObject: "index.html",
+        domainNames: ["lunch.irrlicht.io"],
+        defaultBehavior: {
+          origin: new origins.S3Origin(bucket, { originAccessIdentity: oai }),
+          allowedMethods: cloudfront.AllowedMethods.ALLOW_GET_HEAD_OPTIONS,
+        },
+        certificate: acm.Certificate.fromCertificateArn(
+          this,
+          "Certificate",
+          "arn:aws:acm:us-east-1:420912396104:certificate/8b452da9-bd92-471b-802f-85cf34b98d6b"
+        ),
       }
     );
 

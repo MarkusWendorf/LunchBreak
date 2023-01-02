@@ -1,8 +1,11 @@
-import org.apache.pdfbox.pdmodel.PDDocument;
-
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.ParseException;
+
+import org.apache.pdfbox.pdmodel.PDDocument;
 
 public class Util {
 
@@ -16,7 +19,18 @@ public class Util {
     }
 
     public static int parsePrice(String price) {
-        return Integer.parseInt(price.replaceAll("[\\s€,.]", ""));
+        return Integer.parseInt(price.replaceAll("[\\s€,.+]", ""));
+    }
+
+    public static int parsePriceEuro(String price) throws ParseException {
+        DecimalFormat df = new DecimalFormat();
+        DecimalFormatSymbols dfs = new DecimalFormatSymbols();
+        dfs.setCurrencySymbol("€");
+        dfs.setDecimalSeparator(',');
+        df.setDecimalFormatSymbols(dfs);
+
+        double value = df.parse(price.replaceAll("[+]", "")).doubleValue() * 100;
+        return (int) value;
     }
 
     public static String cleanString(String str) {

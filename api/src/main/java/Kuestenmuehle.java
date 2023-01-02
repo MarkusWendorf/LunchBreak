@@ -1,12 +1,4 @@
-import dto.Dish;
-import dto.Menu;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import technology.tabula.*;
-import technology.tabula.extractors.SpreadsheetExtractionAlgorithm;
-
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.temporal.TemporalAdjusters;
@@ -15,6 +7,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+
+import org.apache.pdfbox.pdmodel.PDDocument;
+
+import dto.Dish;
+import dto.Menu;
+import technology.tabula.ObjectExtractor;
+import technology.tabula.Page;
+import technology.tabula.RectangularTextContainer;
+import technology.tabula.Table;
+import technology.tabula.TextChunk;
+import technology.tabula.extractors.SpreadsheetExtractionAlgorithm;
 
 public class Kuestenmuehle implements MenuProvider {
 
@@ -37,7 +40,8 @@ public class Kuestenmuehle implements MenuProvider {
     }
 
     private void getMenu(Map<LocalDate, Menu> menusByDay, int week) throws IOException {
-        PDDocument pdfDocument = Util.downloadPDF("https://www.kuestenmuehle.de/files/bilder/pdf/speiseplan-kw" + week + ".pdf");
+        String weekLeadingZero = String.format("%02d", week);
+        PDDocument pdfDocument = Util.downloadPDF("https://www.kuestenmuehle.de/files/bilder/pdf/speiseplan-kw" + weekLeadingZero + ".pdf");
         ObjectExtractor oe = new ObjectExtractor(pdfDocument);
 
         Page page = oe.extract(1);

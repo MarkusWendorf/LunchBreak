@@ -14,16 +14,18 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.temporal.WeekFields;
 import java.util.*;
 
 public class Handler implements RequestHandler<ScheduledEvent, Void> {
-    public static void main(String[] args) throws IOException {
-        //Map<Integer,  Map<LocalDate, List<Menu>>> combined = getMenusForCurrentWeek(Arrays.asList(new BlauerEselBistro()));
+    public static void main(String[] args) throws IOException, ParseException {
+        Map<Integer,  Map<LocalDate, List<Menu>>> combined = getMenusForCurrentWeek(Arrays.asList(new Kuestenmuehle()));
+        System.out.println(combined);
     }
 
-    private static Map<Integer,  Map<LocalDate, List<Menu>>> getMenusForCurrentWeek(List<MenuProvider> providers) throws IOException {
+    private static Map<Integer,  Map<LocalDate, List<Menu>>> getMenusForCurrentWeek(List<MenuProvider> providers) throws IOException, ParseException {
         // tree map for ordering
         Map<Integer,  Map<LocalDate, List<Menu>>> kw = new TreeMap<>();
 
@@ -67,6 +69,8 @@ public class Handler implements RequestHandler<ScheduledEvent, Void> {
             s3.putObject(System.getenv("bucket"), "lunchdata.json", input, metadata);
 
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
             e.printStackTrace();
         }
 

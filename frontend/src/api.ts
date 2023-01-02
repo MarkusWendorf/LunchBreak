@@ -6,9 +6,9 @@ dayjs.extend(isoWeek);
 
 export function getLunchData(): Promise<MenusByWeek> {
   return exponentialBackoff(async () => {
-    const lunchdata = "https://d127kst3f1l6wp.cloudfront.net/lunchdata.json";
+    const lunchdata = "https://lunch.irrlicht.io/lunchdata.json";
     const headers = new Headers();
-    headers.append("cache-control", "no-cache");
+    headers.append("cache-control", "no-store");
 
     const response = await fetch(lunchdata, { headers });
     return response.json();
